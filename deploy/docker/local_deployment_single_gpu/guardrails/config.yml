@@ -20,13 +20,13 @@ models:
     engine: nim
     model: meta/llama-3.1-8b-instruct
     parameters:
-      base_url: "http://host.docker.internal:8007/v1"
+      base_url: "http://llm-nim:8000/v1"
 
   - type: embeddings
     engine: nim
     model: nvidia/llama-3.2-nv-embedqa-1b-v2
     parameters:
-      base_url: "http://host.docker.internal:8006/v1"
+      base_url: "http://embedding-nim:8000/v1"
 
 rails:
   input:

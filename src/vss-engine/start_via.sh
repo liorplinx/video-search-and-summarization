@@ -105,8 +105,10 @@ if [ -z $VLM_BATCH_SIZE ]; then
             VLM_BATCH_SIZE=1
         fi
     else
-        if [[ "$GPU_MEM" == *"N/A"* || $GPU_MEM -gt 80000 ]]; then
-            VLM_BATCH_SIZE=128
+        if [[ "$GPU_MEM" == *"N/A"* ]]; then
+            VLM_BATCH_SIZE=16
+        elif [[ $GPU_MEM -gt 80000 ]]; then
+            VLM_BATCH_SIZE=16
         elif [[ $GPU_MEM -gt 46000 ]]; then
             VLM_BATCH_SIZE=16
         else
@@ -298,7 +300,7 @@ start_via_server() {
         if [ ! -z $NUM_VLM_PROCS ]; then
             EXTRA_ARGS+=" --num-vlm-procs $NUM_VLM_PROCS"
         else
-            EXTRA_ARGS+=" --num-vlm-procs 10"
+            EXTRA_ARGS+=" --num-vlm-procs 4"
         fi
     fi
     if [ ! -z $VLM_DEFAULT_NUM_FRAMES_PER_CHUNK ]; then

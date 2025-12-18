@@ -1930,7 +1930,7 @@ class VlmPipeline:
         parser.add_argument(
             "--max-live-streams",
             type=int,
-            default=256,
+            default=32,
             help="Number of maximum live streams to support at a time",
         )
         parser.add_argument(

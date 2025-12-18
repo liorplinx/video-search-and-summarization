@@ -40,7 +40,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://host.docker.internal:8007/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
@@ -49,7 +49,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://host.docker.internal:8007/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
@@ -58,7 +58,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://host.docker.internal:8007/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
@@ -67,13 +67,13 @@ tools:
     type: embedding
     params:
       model: nvidia/llama-3.2-nv-embedqa-1b-v2
-      base_url: "http://host.docker.internal:8006/v1" #FIXME
+      base_url: "http://embedding-nim:8000/v1" #FIXME
 
   nvidia_reranker:
     type: reranker
     params:
       model: nvidia/llama-3.2-nv-rerankqa-1b-v2
-      base_url: "http://host.docker.internal:8005/v1" #FIXME - update url to running reranker NIM Instance
+      base_url: "http://reranker-nim:8000/v1" #FIXME - update url to running reranker NIM Instance
 
   notification_tool:
     type: alert_sse_notifier
@@ -84,8 +84,8 @@ functions:
   summarization:
     type: batch_summarization
     params:
-      batch_size: 6
-      batch_max_concurrency: 20
+      batch_size: 2
+      batch_max_concurrency: 4
       prompts:
         caption: "Write a concise and clear dense caption for the provided warehouse video, focusing on irregular or hazardous events such as boxes falling, workers not wearing PPE, workers falling, workers taking photographs, workers chitchatting, forklift stuck, etc. Start and end each sentence with a time stamp."
         caption_summarization: "You should summarize the following events of a warehouse in the format start_time:end_time:caption. For start_time and end_time use . to seperate seconds, minutes, hours. If during a time segment only regular activities happen, then ignore them, else note any irregular activities in detail. The output should be bullet points in the format start_time:end_time: detailed_event_description. Don't return anything else except the bullet points."

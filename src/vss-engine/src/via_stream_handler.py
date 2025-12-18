@@ -570,7 +570,7 @@ class ViaStreamHandler:
 
         self.default_caption_prompt = self._args.summarization_query
         self._ctx_mgr_pool = []
-        self.NUM_CA_RAG_PROCESSES_LAUNCH = 10
+        self.NUM_CA_RAG_PROCESSES_LAUNCH = 2
         self.num_ctx_mgr = 0
         self.MAX_STREAMS = self._args.max_live_streams
 
