@@ -28,6 +28,8 @@ services:
       - "${CA_RAG_CONFIG:-/dummy}${CA_RAG_CONFIG:+:/opt/nvidia/via/default_config.yaml}"
       - "${PROMPT_CONFIG:-/dummy}${PROMPT_CONFIG:+:/opt/nvidia/via/prompt_config.yaml}"
       - "${GUARDRAILS_CONFIG:-/dummy}${GUARDRAILS_CONFIG:+:/opt/nvidia/via/guardrails_config}"
+      - "${VIA_TMP_DIR?}:/tmp"
+      - "${VIA_TMP_DIR?}/.cache:/root/.cache"
       - "${EXAMPLE_STREAMS_DIR:-/dummy}${EXAMPLE_STREAMS_DIR:+:/opt/nvidia/via/streams:ro}"
       - "${MILVUS_DATA_DIR:-/dummy}${MILVUS_DATA_DIR:+:/root/.milvus.io/milvus-server/2.3.5}"
       - "${MODEL_ROOT_DIR:-/dummy}${MODEL_ROOT_DIR:+:${MODEL_ROOT_DIR:-}}"
