@@ -24,8 +24,9 @@ services:
       - "${BACKEND_PORT?}:${BACKEND_PORT?}"
       - "${FRONTEND_PORT?}:${FRONTEND_PORT?}"
     volumes:
-      - "${VIA_TMP_DIR:-/tmp/via-tmp}:/via-tmp"
-      - "${VIA_TMP_DIR:-/tmp/via-tmp}/huggingface:/root/.cache/huggingface"
+      - /tmp:/host-tmp
+      - "${HOME}/vss-data/huggingface:/root/.cache/huggingface"
+      - "${HOME}/vss-data/huggingface:/host-tmp/huggingface"
       - "${ASSET_STORAGE_DIR:-/dummy}${ASSET_STORAGE_DIR:+:/tmp/assets}"
       - "${CA_RAG_CONFIG:-/dummy}${CA_RAG_CONFIG:+:/opt/nvidia/via/default_config.yaml}"
       - "${PROMPT_CONFIG:-/dummy}${PROMPT_CONFIG:+:/opt/nvidia/via/prompt_config.yaml}"
