@@ -81,7 +81,7 @@ class CosmosReason1:
                 else:
                     from tensorrt_llm._torch.llm import LLM
 
-                gpu_memory_utilization = os.environ.get("TRT_LLM_MEM_USAGE_FRACTION", "0.9")
+                gpu_memory_utilization = os.environ.get("TRT_LLM_MEM_USAGE_FRACTION", "0.8")
                 if not gpu_memory_utilization.strip():
                     gpu_memory_utilization = "0.9"
                 gpu_memory_utilization = float(gpu_memory_utilization)
@@ -124,7 +124,7 @@ class CosmosReason1:
             model_lock_path = model_path + "/.lock"
             with FileLock(model_lock_path):
                 logger.info("Initializing Cosmos-Reason1-7B from: %s", model_path)
-                gpu_memory_utilization = os.environ.get("VLLM_GPU_MEMORY_UTILIZATION", "0.9")
+                gpu_memory_utilization = os.environ.get("VLLM_GPU_MEMORY_UTILIZATION", "0.8")
                 if not gpu_memory_utilization.strip():
                     gpu_memory_utilization = "0.9"
                 gpu_memory_utilization = float(gpu_memory_utilization)
