@@ -177,6 +177,8 @@ services:
     environment:
       NGC_API_KEY: "${NGC_API_KEY:-}"
       NVIDIA_VISIBLE_DEVICES: "${NIM_GPU_DEVICE:-0}"
+      VLLM_MAX_MODEL_LEN: "8192"
+      VLLM_GPU_MEMORY_UTILIZATION: "0.6"
     volumes:
       - "${LOCAL_NIM_CACHE:-nim-cache}:/opt/nim/.cache"
     ports:
