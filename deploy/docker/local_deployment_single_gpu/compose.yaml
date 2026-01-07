@@ -124,7 +124,8 @@ services:
       ALERT_REVIEW_SKIP_GUARDRAILS: "${ALERT_REVIEW_SKIP_GUARDRAILS:-true}"
       VLM_SYSTEM_PROMPT: "${VLM_SYSTEM_PROMPT:-}"
       ALERT_REVIEW_DEFAULT_VLM_SYSTEM_PROMPT: "${ALERT_REVIEW_DEFAULT_VLM_SYSTEM_PROMPT:-}"
-      VLLM_GPU_MEMORY_UTILIZATION: "${VLLM_GPU_MEMORY_UTILIZATION:-0.8}"
+      VLLM_GPU_MEMORY_UTILIZATION: "${VLLM_GPU_MEMORY_UTILIZATION:-0.92}"
+      VLM_MAX_MODEL_LEN: "${VLM_MAX_MODEL_LEN:-8192}"
       # OpenTelemetry Configuration (Full VIA Engine)
       ENABLE_VIA_HEALTH_EVAL: "${ENABLE_VIA_HEALTH_EVAL:-false}"
       VIA_ENABLE_OTEL: "${VIA_ENABLE_OTEL:-false}"
@@ -143,7 +144,9 @@ services:
       VLLM_DISABLE_CUSTOM_ALL_REDUCE: "1"  # Disables custom all-reduce
       VLLM_ENFORCE_EAGER: "1"             # Disables some memory optimizations but can help with OOM
       VLLM_USE_FLASH_ATTN: "1"            # Enables Flash Attention
-      VLLM_USE_VMAP: "0"                  # Disables vmap which can use more memory      
+      VLLM_USE_VMAP: "0"                  # Disables vmap which can use more memory   
+      VLLM_USE_TORCH_COMPILE: "false"
+         
     depends_on:
       llm-nim:
         condition: service_started
