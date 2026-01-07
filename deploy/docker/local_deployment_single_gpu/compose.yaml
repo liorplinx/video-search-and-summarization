@@ -146,10 +146,10 @@ services:
       VLLM_USE_FLASH_ATTN: "1"            # Enables Flash Attention
       VLLM_USE_VMAP: "0"                  # Disables vmap which can use more memory   
       VLLM_USE_TORCH_COMPILE: "false"
-         
+
     depends_on:
-      llm-nim:
-        condition: service_started
+      # llm-nim:
+      #   condition: service_started
       embedding-nim:
         condition: service_started
       reranker-nim:
@@ -186,6 +186,8 @@ services:
       - "${LOCAL_NIM_CACHE:-nim-cache}:/opt/nim/.cache"
     ports:
       - "${LLM_NIM_PORT:-8000}:8000"
+    deploy:
+      replicas: 0
 
   embedding-nim:
     image: ${EMBEDDING_NIM_IMAGE:-nvcr.io/nim/nvidia/llama-3.2-nv-embedqa-1b-v2:1.9.0}
