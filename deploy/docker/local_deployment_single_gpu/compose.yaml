@@ -172,6 +172,8 @@ services:
     tty: true
     extra_hosts:
       host.docker.internal: host-gateway
+    dns:
+      - 8.8.8.8
 
   llm-nim:
     image: ${LLM_NIM_IMAGE:-nvcr.io/nim/meta/llama-3.1-8b-instruct:1.12.0}
