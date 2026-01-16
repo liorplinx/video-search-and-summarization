@@ -40,7 +40,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://reranker-nim:8000/v1"
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
@@ -49,7 +49,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://reranker-nim:8000/v1"
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
@@ -58,7 +58,7 @@ tools:
     type: llm
     params:
       model: meta/llama-3.1-8b-instruct
-      base_url: "http://llm-nim:8000/v1" #FIXME - update url to running LLM Instance
+      base_url: "http://reranker-nim:8000/v1"
       max_tokens: 2048
       temperature: 0.2
       top_p: 0.7
