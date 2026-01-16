@@ -244,7 +244,6 @@ def main():
         print("\n--- 5. Waiting for services to become ready ---")
         backend_port = os.environ["BACKEND_PORT"]
         checks = [
-            ("LLM NIM", "http://localhost:8000/v1/health/ready"),
             ("Embedding NIM", "http://localhost:8006/v1/health/ready"),
             ("Reranker NIM", "http://localhost:8005/v1/health/ready"),
             ("VSS Backend", f"http://localhost:{backend_port}/health/ready"),
