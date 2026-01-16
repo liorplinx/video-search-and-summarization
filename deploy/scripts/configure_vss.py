@@ -140,6 +140,11 @@ def main():
         print(f"VSS_REPO_DIR={vss_repo_dir}")
         print(f"VSS_COMPOSE_DIR={compose_dir}")
 
+        # Clean up any previous deployments
+        print("\n--- Cleaning up previous deployment (if any) ---")
+        run_command(["docker", "compose", "down"], cwd=compose_dir, check=False, capture_output=True)
+        print("Cleanup complete.")
+
         # 2. Configure deployment settings
         print("\n--- 2. Configuring deployment settings ---")
         data_root = get_data_root()
